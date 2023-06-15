@@ -1,38 +1,381 @@
-.App {
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  background-color: #333;
+  padding: 10px;
+}
+
+.header .navbar-brand {
+  color: #fff;
+  font-size: 24px;
+}
+
+.container {
+  margin-top: 20px;
+}
+
+.grocery-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.grocery-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.grocery-list li:last-child {
+  border-bottom: none;
+}
+
+.grocery-list li .grocery-name {
+  font-weight: bold;
+}
+
+.grocery-list li .add-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.grocery-list li .add-button:hover {
+  background-color: #0056b3;
+}
+
+.shopping-cart {
+  list-style-type: none;
+  padding: 0;
+}
+
+.shopping-cart li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.shopping-cart li:last-child {
+  border-bottom: none;
+}
+
+.shopping-cart li .item-info {
+  display: flex;
+  align-items: center;
+}
+
+.shopping-cart li .item-info .item-name {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.shopping-cart li .item-quantity {
+  display: flex;
+  align-items: center;
+}
+
+.shopping-cart li .item-quantity button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.shopping-cart li .item-quantity button:hover {
+  background-color: #0056b3;
+}
+
+.shopping-cart li .remove-button {
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.shopping-cart li .remove-button:hover {
+  background-color: #c82333;
+}
+
+.footer {
+  background-color: #333;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+.footer p {
+  color: #fff;
+  margin: 0;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.shopping-cart-thumbnail {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.grocery-thumbnail {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.checkout {
+  text-align: center;
+}
+
+.checkout-btn {
+  background-color: #ff6f00;
+  color: #ffffff;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.checkout-btn:hover {
+  background-color: #ff8f00;
+}
+
+.receipt {
+  background-color: #f4f4f4;
+  border-radius: 4px;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.receipt-title {
+  color: #333333;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.receipt-items {
+  margin-bottom: 20px;
+}
+
+.receipt-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.receipt-item-details {
+  display: flex;
+  align-items: center;
+}
+
+.receipt-item-name {
+  margin-right: 10px;
+}
+
+.receipt-item-quantity {
+  background-color: #ff6f00;
+  color: #ffffff;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.receipt-item-price {
+  color: #333333;
+  font-size: 16px;
+}
+
+.receipt-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.receipt-total-amount {
+  color: #333333;
+}
+
+.receipt-close-btn {
+  background-color: #333333;
+  color: #ffffff;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.receipt-close-btn:hover {
+  background-color: #555555;
+}
+
+.groceries {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.grocery-item {
+  display: flex;
+  align-items: center;
+  width: 200px;
+  height: 100px;
+  padding: 10px;
+  border: none;
+  margin-bottom: 10px;
+}
+
+.grocery-item.out-of-stock {
+  background-color: #f8d7da; /* Light red background color for out-of-stock items */
+}
+
+.grocery-item-img {
+  width: 100px;
+  height: 90px;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.grocery-item-details {
+  flex-grow: 1;
+}
+
+.grocery-item-name {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.grocery-item-price {
+  font-size: 14px;
+  color: #777;
+}
+
+.shopping-cart {
   display: flex;
   flex-direction: column;
+  gap: 20px;
+}
+
+.cart-item {
+  background-color: #ffffff;
+  padding: 15px;
+  border-radius: 4px;
+  display: flex;
   align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.cart-item-details {
+  display: flex;
+  align-items: center;
+}
+
+.cart-item-img {
+  width: 60px;
+  height: 60px;
+  border-radius: 4px;
+}
+
+.cart-item-info {
+  margin-left: 10px;
+}
+
+.cart-item-name {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.cart-item-price {
+  font-size: 14px;
+  color: #888888;
+}
+
+.cart-item-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.cart-item-action-btn {
+  background-color: #55aadd;
+  color: #ffffff;
+  padding: 5px 10px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cart-item-action-btn:hover {
+  background-color: #3388cc;
+}
+
+.cart-item-remove-btn {
+  background-color: #dd5555;
+  color: #ffffff;
+  padding: 5px 10px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cart-item-remove-btn:hover {
+  background-color: #cc3333;
+}
+
+.empty-cart-message {
+  font-style: italic;
+  color: #aaa;
+  margin-top: 10px;
+}
+
+.payment-options {
+  margin-top: 20px;
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 10px;
 }
 
-.App-link {
-  color: #61dafb;
+.payment-btn,
+.cancel-btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.payment-btn {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.cancel-btn {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.payment-btn:hover,
+.cancel-btn:hover {
+  opacity: 0.8;
 }
