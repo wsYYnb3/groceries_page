@@ -5,7 +5,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import Checkout from "./Checkout";
+
 
 const App = () => {
   const [groceries, setGroceries] = useState([
@@ -191,12 +191,6 @@ const App = () => {
               removeFromShoppingCart={removeFromShoppingCart}
               incrementItem={incrementItem}
               decrementItem={decrementItem}
-            />
-            <Checkout
-              shoppingList={shoppingList}
-              clearShoppingCart={clearShoppingCart}
-              groceries={groceries}
-              setGroceries={setGroceries}
             />
           </div>
         </div>
