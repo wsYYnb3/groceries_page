@@ -66,17 +66,21 @@ const App = () => {
       thumbnail: require("./assets/peach.jpg"),
     },
   ]);
-
+  const [isPaymentComplete, setIsPaymentComplete] = useState(false);
   const [shoppingList, setShoppingList] = useState([]);
 
   const clearShoppingCart = () => {
     setShoppingList([]);
   };
 
+  const handlePay = () => {
+    setIsPaymentComplete(true);
+  };
+
   const addToShoppingCart = (itemId) => {
     const item = groceries.find((i) => i.id === itemId);
 
-    if ( item.quantity <= 0) {
+    if (item.quantity <= 0) {
       return;
     }
 
@@ -178,27 +182,39 @@ const App = () => {
       <div className="container">
         <div className="row">
           <div className="col-md-6">
-            <h2>Groceries</h2>
-            <Groceries
-              groceries={groceries}
-              addToShoppingCart={addToShoppingCart}
-            />
+            {!isPaymentComplete && (
+              <>
+                <div>
+                  <h2>Groceries</h2>
+                  <Groceries
+                    groceries={groceries}
+                    addToShoppingCart={addToShoppingCart}
+                  />
+                </div>
+                <div>
+                  <h2>Shopping Cart</h2>
+                  <ShoppingCart
+                    shoppingList={shoppingList}
+                    removeFromShoppingCart={removeFromShoppingCart}
+                    incrementItem={incrementItem}
+                    decrementItem={decrementItem}
+                  />
+                </div>
+              </>
+            )}
+            {isPaymentComplete && (
+              <div className="payment-complete-message">Payment Complete!</div>
+            )}
           </div>
-          <div className="col-md-6">
-            <h2>Shopping Cart</h2>
-            <ShoppingCart
-              shoppingList={shoppingList}
-              removeFromShoppingCart={removeFromShoppingCart}
-              incrementItem={incrementItem}
-              decrementItem={decrementItem}
-            />
-            <Checkout
-              shoppingList={shoppingList}
-              clearShoppingCart={clearShoppingCart}
-              groceries={groceries}
-              setGroceries={setGroceries}
-            />
-          </div>
+          <Checkout
+            shoppingList={shoppingList}
+            clearShoppingCart={clearShoppingCart}
+            groceries={groceries}
+            setGroceries={setGroceries}
+            handlePay={handlePay}
+            isPaymentComplete={isPaymentComplete}
+            setIsPaymentComplete={setIsPaymentComplete}
+          />
         </div>
       </div>
       <Footer />

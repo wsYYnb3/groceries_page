@@ -14,10 +14,24 @@ body {
   font-size: 24px;
 }
 
+
 .container {
-  margin-top: 20px;
+  display: flex;
 }
 
+.col-md-6 {
+  flex: 1;
+}
+
+.groceries {
+  float: left;
+  width: 40%;
+}
+
+.shopping-cart {
+  float: right;
+  width: 40%;
+}
 .grocery-list {
   list-style-type: none;
   padding: 0;
@@ -43,7 +57,7 @@ body {
   background-color: #007bff;
   color: #fff;
   border: none;
-  padding: 5px 10px;
+  padding: 4px 10px;
   cursor: pointer;
 }
 

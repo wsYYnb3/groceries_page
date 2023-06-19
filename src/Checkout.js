@@ -5,6 +5,8 @@ const Checkout = ({
   clearShoppingCart,
   groceries,
   setGroceries,
+  setIsPaymentComplete,
+  isPaymentComplete,
 }) => {
   const [receiptVisible, setReceiptVisible] = useState(false);
 
@@ -12,7 +14,9 @@ const Checkout = ({
     setReceiptVisible(true);
   };
 
-  const handlePay = () => {};
+  const handlePay = () => {
+    setIsPaymentComplete(true);
+  };
 
   const handleCancel = () => {
     setReceiptVisible(false);
@@ -46,9 +50,11 @@ const Checkout = ({
 
   return (
     <div className="checkout">
-      <button className="checkout-btn" onClick={handleCheckout}>
-        Checkout
-      </button>
+      {!isPaymentComplete && (
+        <button className="checkout-btn" onClick={handleCheckout}>
+          Checkout
+        </button>
+      )}
       {receiptVisible && (
         <div className="receipt">
           <h2 className="receipt-title">Receipt</h2>
@@ -77,7 +83,7 @@ const Checkout = ({
                   ${calculateTotal().toFixed(2)}
                 </span>
               </div>
-              {
+              {!isPaymentComplete && (
                 <div className="payment-options">
                   <button className="payment-btn" onClick={handlePay}>
                     Pay
@@ -86,7 +92,7 @@ const Checkout = ({
                     Cancel
                   </button>
                 </div>
-              }
+              )}
             </>
           )}
         </div>
